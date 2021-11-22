@@ -1,0 +1,37 @@
+﻿@model Rm_Midterm.ViewModels.NewCourseViewModel
+@{
+    ViewBag.Title = "CourseForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@using (Html.BeginForm("Update", "Courses"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Courses.CourseName, "Course Name")
+        @Html.TextBoxFor(m => m.Courses.CourseName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Courses.CourseName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Courses.CourseDescription, "Course Description")
+        @Html.TextBoxFor(m => m.Courses.CourseDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Courses.CourseDescription)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Courses.TutorName, "Tutor Name")
+        @Html.TextBoxFor(m => m.Courses.TutorName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Courses.TutorName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Courses.CourseRating, "Course Rating")
+        @Html.DropDownListFor(m => m.Courses.CourseRating, new SelectList(Model.CourseRatings, "Id", "Rating"), "Select Rating", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Courses.CourseRating)
+    </div>
+
+
+    @Html.HiddenFor(m => m.Courses.Id)
+    <button type="submit" class="btn btn-primary">Create</button>
+}
+
+

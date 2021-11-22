@@ -1,0 +1,20 @@
+﻿@model Rm_Midterm.Models.Courses
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.CourseName</h2>
+<ul>
+    <li>Course Tutor: @Model.TutorName</li>
+    <li>Course Description: @Model.CourseDescription</li>
+    <li>Course Rating: @Model.CourseRating</li>
+</ul>
+
+
+<p>
+    @Html.ActionLink("Edit Course", "Edit", "Courses", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Delete Course", "Delete", "Courses", new { id = Model.Id }, new { @class = "btn btn-primary" })
+</p>
+
+

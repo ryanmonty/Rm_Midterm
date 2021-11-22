@@ -1,0 +1,54 @@
+﻿@model Rm_Midterm.ViewModels.NewStudentViewModel
+@{
+    ViewBag.Title = "StudentForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@using (Html.BeginForm("Create", "Students"))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.Students.FirstName)
+    @Html.TextBoxFor(m => m.Students.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Students.FirstName)
+</div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Students.LastName)
+        @Html.TextBoxFor(m => m.Students.LastName, new { @class = "form-control" })
+    </div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Students.BirthDate)
+    @Html.TextBoxFor(m => m.Students.BirthDate, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Students.BirthDate)
+</div>
+    <div class="form-group" style="float:left;width:100px">
+        @Html.LabelFor(m => m.Students.CourseId, "Course ID")
+        @Html.TextBoxFor(m => m.Students.CourseId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Students.CourseId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Students.CourseStatus, "Courses Available")
+        @Html.DropDownListFor(m => m.Courses, new SelectList(Model.CourseList, "Id", "CourseName"), "Courses", new { @class = "form-control" })
+        
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Students.CourseEnrolledDate, "Date Enrolled")
+        @Html.TextBoxFor(m => m.Students.CourseEnrolledDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Students.CourseEnrolledDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Students.CourseStatus, "Course Status")
+        @Html.DropDownListFor(m => m.Students.CourseStatusId, new SelectList(Model.Status, "Id", "Rating"), "Select Status", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Students.CourseStatus)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Students.Grade, "Grade")
+        @Html.TextBoxFor(m => m.Students.Grade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Students.Grade)
+    </div>
+
+
+    @Html.HiddenFor(m => m.Students.Id)
+    <button type="submit" class="btn btn-primary">Create</button>
+}
